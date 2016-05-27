@@ -1,6 +1,34 @@
-<aura:component >
+<aura:component controller="APIConsumer" >
     <aura:attribute name="generalWeatherGif" type="String" default="Fetching..." />
+    <aura:handler event="c:WeatherFeedEvent" action="{!c.showWeather}"/>
+    
     <p>
-     Today is sunny and cloudy and snow and a bit rainy.
+        <ui:outputURL class="smallText" click="{!c.goGetGeneralWeather}" value="" label="Refresh"/>
     </p>
+    
+    <p>
+        <img src="{!v.generalWeatherGif}"/>
+    </p>
+    
+    <p>
+        <ui:outputText aura:id="generalWeather" value="--"/>
+    </p>
+    
+    <p>
+        <ui:outputText aura:id="generalTemperatureF" value="0F"/> -
+        <ui:outputText aura:id="generalTemperatureC" value="0C"/>
+    </p>
+    
+    <p>
+        Wind:
+        <ui:outputText aura:id="generalWindMph" value="0 Mph"/> -
+        <ui:outputText aura:id="generalWindKph" value="0 Kph"/>
+    </p>
+    
+    <p>
+        Precipitation:
+        <ui:outputText aura:id="generalPrecipitation" value="0%"/>
+    </p>
+    
+    <p class="smallText"> by WeatherUnderground </p>
 </aura:component>

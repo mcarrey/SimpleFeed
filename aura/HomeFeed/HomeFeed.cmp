@@ -1,5 +1,33 @@
-<aura:component >
-	<p>
-			Hello there.
-	</p>
+<aura:component controller="APIConsumer" >
+    <aura:attribute name="homeWeatherGif" type="String" default="Fetching..." />
+    <aura:handler event="c:HomeFeedEvent" action="{!c.showHome}"/>
+    
+    <!-- <aura:handler name="init" value="{!this}" action="{!c.showHome}" /> -->
+    
+    <div aura:id="homeGreeting" class="homeGreeting">
+        <p>
+            <ui:outputText aura:id="homeHello" value="Hello..."/>
+        </p>
+    </div>
+    
+    <div aura:id="homeWeather" class="homeWeather">
+        <p>
+            Here's the weather:
+        </p>
+        
+        <p>
+            <ui:outputURL class="smallText" click="{!c.goGetHomeWeather}" value="" label="Refresh"/>
+        </p>
+        
+        <p>
+            <img src="{!v.homeWeatherGif}"/>
+        </p>
+        
+        <p>
+            <ui:outputText aura:id="homeTemperatureF" value="0F"/> -
+            <ui:outputText aura:id="homeTemperatureC" value="0C"/>
+        </p>
+        
+        <p class="smallText"> by WeatherUnderground </p>
+    </div>
 </aura:component>

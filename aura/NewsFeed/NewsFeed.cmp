@@ -1,4 +1,4 @@
-<aura:component >
+<aura:component controller="APIConsumer" >
 	<p>
 		Today the dollar went up.
 	</p>

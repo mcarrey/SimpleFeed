@@ -1,5 +1,46 @@
 <aura:component >
-	<p>
-	 Main component.
-	</p>
+    <ltng:require styles="/resource/SLDS104/assets/styles/salesforce-lightning-design-system-ltng.css" />
+	
+    <aura:registerEvent name="initiateHomeFeedEvent" type="c:HomeFeedEvent" />
+    <aura:registerEvent name="initiateWeatherFeedEvent" type="c:WeatherFeedEvent" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.showHomeDiv}" />
+    
+    <div aura:id="general" class="slds">
+        <div aura:id="header" class="header">
+            <p>
+                <ui:outputURL click="{!c.showHomeDiv}" value="" label="Home"/> -
+                <ui:outputURL click="{!c.showCalendarDiv}" value="" label="Calendar"/> -
+                <ui:outputURL click="{!c.showWeatherDiv}" value="" label="Weather"/> -
+                <ui:outputURL click="{!c.showNewsDiv}" value="" label="News"/> -
+                <ui:outputURL click="{!c.showNotesDiv}" value="" label="Notes"/>
+            </p>
+        </div>
+        
+        <div aura:id="body" class="body">
+            <div aura:id="home" class="home">
+    			<c:HomeFeed />
+            </div>
+            
+            <div aura:id="calendar" class="calendar">
+                <c:CalendarFeed />
+            </div>
+            
+            <div aura:id="weather" class="weather">
+            	<c:WeatherFeed />
+            </div>
+            
+            <div aura:id="news" class="news">
+                <c:NewsFeed />
+            </div>
+
+             <div aura:id="notes" class="notes">
+                 <c:NotesFeed />
+            </div>
+        </div>
+        
+        <div aura:id="footer" class="footer">
+            <p class="smallText">2016 - SimpleFeed</p>
+        </div>
+    </div>
 </aura:component>
