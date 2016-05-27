@@ -1,0 +1,5 @@
+<aura:component >
+	<p>
+			Today is today.
+	</p>
+</aura:component>

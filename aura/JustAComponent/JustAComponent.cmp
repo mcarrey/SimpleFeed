@@ -1,0 +1,102 @@
+<aura:component controller="APIConsumer" >
+    <aura:attribute name="homeWeatherGif" type="String" default="Fetching..." />
+    <aura:attribute name="generalWeatherGif" type="String" default="Fetching..." />
+    <aura:handler name="init" value="{!this}" action="{!c.showHome}" />
+
+	<div aura:id="general" class="slds">
+        <div aura:id="header" class="header">
+            <p>
+                <ui:outputURL click="{!c.showHome}" value="" label="Home"/> -
+                <ui:outputURL click="{!c.showCalendar}" value="" label="Calendar"/> -
+                <ui:outputURL click="{!c.showWeather}" value="" label="Weather"/> -
+                <ui:outputURL click="{!c.showNews}" value="" label="News"/> -
+                <ui:outputURL click="{!c.showNotes}" value="" label="Notes"/>
+            </p>
+        </div>
+
+        <div aura:id="body" class="body">
+            <div aura:id="home" class="home">
+                <div aura:id="homeGreeting" class="homeGreeting">
+                	<p>
+                        <ui:outputText aura:id="homeHello" value="Hello..."/>
+                    </p>
+                </div>
+
+                <div aura:id="homeWeather" class="homeWeather">
+                    <p>
+                        Here's the weather:
+                    </p>
+
+                    <p>
+                        <ui:outputURL class="smallText" click="{!c.goGetHomeWeather}" value="" label="Refresh"/>
+                    </p>
+
+                    <p>
+                        <img src="{!v.homeWeatherGif}"/>
+                    </p>
+
+                    <p>
+                        <ui:outputText aura:id="homeTemperatureF" value="0F"/> -
+                        <ui:outputText aura:id="homeTemperatureC" value="0C"/>
+                    </p>
+
+                    <p class="smallText"> by WeatherUnderground </p>
+                </div>
+            </div>
+
+            <div aura:id="calendar" class="calendar">
+                <p>
+                    Today is today all day.
+                </p>
+            </div>
+
+            <div aura:id="weather" class="weather">
+                <p>
+                    <ui:outputURL class="smallText" click="{!c.goGetGeneralWeather}" value="" label="Refresh"/>
+                </p>
+
+                <p>
+                    <img src="{!v.generalWeatherGif}"/>
+                </p>
+
+                <p>
+                    <ui:outputText aura:id="generalWeather" value="--"/>
+                </p>
+
+                <p>
+                    <ui:outputText aura:id="generalTemperatureF" value="0F"/> -
+                    <ui:outputText aura:id="generalTemperatureC" value="0C"/>
+                </p>
+
+                <p>
+                    Wind:
+                    <ui:outputText aura:id="generalWindMph" value="0 Mph"/> -
+                    <ui:outputText aura:id="generalWindKph" value="0 Kph"/>
+                </p>
+
+                <p>
+                    Precipitation:
+                    <ui:outputText aura:id="generalPrecipitation" value="0%"/>
+                </p>
+
+                <p class="smallText"> by WeatherUnderground </p>
+            </div>
+
+            <div aura:id="news" class="news">
+                <p>
+                	Today the dollar went up.
+                </p>
+            </div>
+
+             <div aura:id="notes" class="notes">
+                 <p>
+                 	Today I have to buy milk.
+                 </p>
+            </div>
+        </div>
+
+        <div aura:id="footer" class="footer">
+            <p class="smallText">2016 - SimpleFeed</p>
+        </div>
+    </div>
+</aura:component>

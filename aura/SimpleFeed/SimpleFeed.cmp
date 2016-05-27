@@ -1,0 +1,5 @@
+<aura:component >
+	<p>
+	 Main component.
+	</p>
+</aura:component>

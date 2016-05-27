@@ -1,0 +1,36 @@
+.THIS {
+}
+
+/* Hides elements */
+.THIS .toggle {
+    display: none !important;
+}
+
+/* Main menu */
+.THIS .header {
+    width: 100%;
+    height: 5%;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.THIS .body {
+    width: 100%;
+    height: 90%;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.THIS .footer {
+    width: 100%;
+    height: 5%;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.THIS .smallText {
+    font-size: 8px;
+}

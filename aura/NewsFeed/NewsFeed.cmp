@@ -1,0 +1,5 @@
+<aura:component >
+	<p>
+		Today the dollar went up.
+	</p>
+</aura:component>

@@ -1,0 +1,6 @@
+<aura:component >
+    <aura:attribute name="generalWeatherGif" type="String" default="Fetching..." />
+    <p>
+     Today is sunny and cloudy and snow and a bit rainy.
+    </p>
+</aura:component>

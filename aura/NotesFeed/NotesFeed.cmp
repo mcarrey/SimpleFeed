@@ -1,0 +1,5 @@
+<aura:component >
+	<p>
+	 Today I have to buy milk.
+	</p>
+</aura:component>
