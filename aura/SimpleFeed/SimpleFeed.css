@@ -34,3 +34,11 @@
 .THIS .smallText {
     font-size: 8px;
 }
+
+.THIS .marginArea {
+    margin-top: 5px;
+}
+
+.THIS .marginComponentArea {
+    margin-top: 10px;
+}

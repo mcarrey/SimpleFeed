@@ -19,4 +19,38 @@ public with sharing class APIConsumer {
 
 	      return specificWeather;
     }
+    
+    @AuraEnabled
+    public static String getNotes() {
+        List<MyNotes__c> notes = [SELECT Id, Content__c
+                            FROM MyNotes__c
+                            WHERE CreatedById =: UserInfo.getUserId()
+                            LIMIT 1];
+        
+        if (notes.size() > 0) {
+        	return notes[0].Content__c;
+        } else {
+            return null;
+        }
+    }
+    
+    @AuraEnabled
+    public static void setNotes(String text) {
+        List<MyNotes__c> notes = [SELECT Id, Content__c
+                            FROM MyNotes__c
+                            WHERE CreatedById =: UserInfo.getUserId()
+                            LIMIT 1];
+        
+        if (notes.size() > 0) {
+            notes[0].Content__c = text;
+            
+            update notes[0];
+        } else {
+            // No notes.
+            MyNotes__c newNote = new MyNotes__c();
+            newNote.Content__c = text;
+            
+            insert newNote;
+        }
+    }
 }

@@ -13,6 +13,8 @@
                 var otGeneralWindMph = component.find("generalWindMph");
                 var otGeneralWindKph = component.find("generalWindKph");
                 var otGeneralPrecipitation = component.find("generalPrecipitation");
+                var otGeneralHumidity = component.find("generalHumidity");
+                var otGeneralForecast = component.find("generalForecast");
 
                 otGeneralTemperatureC.set("v.value", weatherNow.temp_c+'C');
                 otGeneralTemperatureF.set("v.value", weatherNow.temp_f+'F');
@@ -20,6 +22,8 @@
                 otGeneralWindKph.set("v.value", weatherNow.wind_kph+' Kph');
                 otGeneralWeather.set("v.value",  weatherNow.weather);
                 otGeneralPrecipitation.set("v.value", weatherNow.precip_today_metric+'%');
+                otGeneralHumidity.set("v.value", weatherNow.relative_humidity);
+                otGeneralForecast.set("v.value",  weatherNow.forecast_url );
                 component.set("v.generalWeatherGif", "/resource/weather_gif/"+weatherNow.icon+".gif");
             }
 

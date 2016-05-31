@@ -1,16 +1,17 @@
 <aura:component controller="APIConsumer" >
-    <aura:attribute name="homeWeatherGif" type="String" default="Fetching..." />
+    <aura:attribute name="homeWeatherGif" type="String" default="" />
     <aura:handler event="c:HomeFeedEvent" action="{!c.showHome}"/>
     
-    <!-- <aura:handler name="init" value="{!this}" action="{!c.showHome}" /> -->
-    
-    <div aura:id="homeGreeting" class="homeGreeting">
+    <div aura:id="homeGreeting" class="marginComponentArea">
         <p>
             <ui:outputText aura:id="homeHello" value="Hello..."/>
         </p>
     </div>
     
-    <div aura:id="homeWeather" class="homeWeather">
+    <div aura:id="homeCalendar" class="marginComponentArea">
+    </div>
+    
+    <div aura:id="homeWeather" class="marginComponentArea">
         <p>
             Here's the weather:
         </p>
@@ -29,5 +30,27 @@
         </p>
         
         <p class="smallText"> by WeatherUnderground </p>
+    </div>
+    
+    <div aura:id="homeNews" class="marginComponentArea">
+    </div>
+    
+    <div aura:id="homeNotes" class="marginComponentArea">
+        <p class="marginArea">
+            My notes:
+        </p>
+        
+        <p class="marginArea">
+        	<ui:outputText aura:id="homeHasNotes" value=""/>
+        </p>
+        
+        <p>
+            <ui:outputURL class="toggle" aura:id="homeShowNotes" click="{!c.goShowNotes}" value="" label="(Show)"/>
+            <ui:outputURL class="toggle" aura:id="homeHideNotes" click="{!c.goHideNotes}" value="" label="(Hide)"/>
+    	</p>
+        
+        <p class="marginArea">
+        	<ui:outputTextArea class="toggle" aura:id="homeMyNotes" value=""/>
+    	</p>
     </div>
 </aura:component>

@@ -38,6 +38,9 @@
 
         helper.hideAll(component, event, helper);
         $A.util.removeClass(divNotes, "toggle");
+        
+        var appEvent = $A.get("e.c:NotesFeedEvent");
+		appEvent.fire();
     },
     
     hideAll : function(component, event, helper) {

@@ -3,6 +3,7 @@
 	
     <aura:registerEvent name="initiateHomeFeedEvent" type="c:HomeFeedEvent" />
     <aura:registerEvent name="initiateWeatherFeedEvent" type="c:WeatherFeedEvent" />
+    <aura:registerEvent name="initiateNotesFeedEvent" type="c:NotesFeedEvent" />
     
     <aura:handler name="init" value="{!this}" action="{!c.showHomeDiv}" />
     
