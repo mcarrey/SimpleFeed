@@ -1,12 +1,12 @@
 <aura:component controller="APIConsumer" >
     <aura:handler event="c:NotesFeedEvent" action="{!c.loadNotes}"/>
-    
-	<p>
-        <ui:inputTextArea aura:id="myNotes" cols="42" rows="10"/>
-	</p>
+
+    <p>
+        <ui:inputTextArea aura:id="myNotes" cols="60" rows="20" resizable="false" value="Loading..."/>
+    </p>
     
     <p>
         <ui:button aura:id="saveNotes" label="Save" press="{!c.saveNotes}"/>
         <ui:outputText aura:id="statusNotes" value="" />
-	</p>
+    </p>
 </aura:component>

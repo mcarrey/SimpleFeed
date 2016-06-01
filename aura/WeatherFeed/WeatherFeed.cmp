@@ -3,7 +3,7 @@
     <aura:handler event="c:WeatherFeedEvent" action="{!c.showWeather}"/>
     
     <p>
-        <ui:outputURL class="smallText" click="{!c.goGetGeneralWeather}" value="" label="Refresh"/>
+        <ui:outputURL class="smallText" click="{!c.goGetGeneralWeather}" value="" label="Refresh &#x27f3;"/>
     </p>
     
     <p>
@@ -40,6 +40,6 @@
     </p>
     
     <div class="marginArea">
-    	<p class="smallText"> by WeatherUnderground </p>
+    	<p class="smallText"> powered by WeatherUnderground </p>
     </div>
 </aura:component>

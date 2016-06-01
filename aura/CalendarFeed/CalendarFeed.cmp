@@ -1,5 +1,16 @@
 <aura:component controller="APIConsumer" >
-	<p>
-			Today is today.
-	</p>
+    <ltng:require scripts="/resource/jquery/jquery-2.2.4.min.js, /resource/fullcalendar/fullcalendar-2.7.2/fullcalendar.min.js"/>
+	<ltng:require styles="/resource/fullcalendar/fullcalendar-2.7.2/fullcalendar.min.css"/>
+
+    <aura:handler event="c:CalendarFeedEvent" action="{!c.goGetEvents}"/>
+    
+    <aura:attribute name="calendarEvents" type="Object[]" />	
+    
+    <p>
+        <ui:outputURL class="smallText" click="{!c.goGetEvents}" value="" label="Refresh &#x27f3;"/>
+    </p>
+    
+    <div aura:id="calendar"></div>
+    
+    <p class="smallText"> powered by FullCalendar </p>
 </aura:component>

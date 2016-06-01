@@ -53,4 +53,10 @@ public with sharing class APIConsumer {
             insert newNote;
         }
     }
+    
+    @AuraEnabled
+    public static List<Event> getEvents(){
+        return [SELECT Id, StartDateTime, EndDateTime, Subject 
+                FROM Event WHERE OwnerId =: UserInfo.getUserId()];
+    }
 }

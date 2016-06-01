@@ -1,5 +1,5 @@
 ({
-	myAction : function(component, event, helper) {
-		
-	}
+	goGetEvents: function(component,event,helper){
+        helper.goGetEvents(component);
+    }
 })

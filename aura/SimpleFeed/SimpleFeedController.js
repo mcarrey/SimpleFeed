@@ -14,6 +14,9 @@
 
         helper.hideAll(component, event, helper);
         $A.util.removeClass(divCalendar, "toggle");
+        
+        var appEvent = $A.get("e.c:CalendarFeedEvent");
+		appEvent.fire();
     },
 
     showWeatherDiv : function(component, event, helper) {

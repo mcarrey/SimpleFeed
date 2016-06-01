@@ -17,6 +17,7 @@
                 var itMyNotes = component.find("myNotes");
                 if (response.getReturnValue() === null) {
                 	otStatusNotes.set("v.value", ' - No saved notes yet! -');
+                    itMyNotes.set("v.value", '');
                 } else {
                     itMyNotes.set("v.value", response.getReturnValue());
                 }

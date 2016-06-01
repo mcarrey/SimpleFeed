@@ -39,6 +39,80 @@
         })
         $A.enqueueAction(action);
     },
+    
+    goGetHomeEvents: function(component) {
+        var action = component.get("c.getEvents"); 
+        var self = this;
+        
+        action.setCallback(this, function(response) {
+            var state = response.getState();
+            
+            if(component.isValid() && state === "SUCCESS"){
+                if (response.getReturnValue() != null) {
+                    var responseEvents = self.tranformToFullCalendarFormat(component, response.getReturnValue());
+                    
+                    self.loadDataToCalendar(component, responseEvents);
+                    component.set("v.calendarEvents", responseEvents);
+                }
+            }
+
+            else if (state === "INCOMPLETE") {
+                console.log("Incomplete.");
+            }
+
+            else if (state === "ERROR") {
+            	var errors = response.getError();
+                if (errors) {
+                    if (errors[0] && errors[0].message) {
+                        console.log("Error message: " + errors[0].message);
+                    }
+                } else {
+                	console.log("Unknown error");
+            	}
+        	}
+        });
+
+        $A.enqueueAction(action); 
+    },
+
+    tranformToFullCalendarFormat : function(component, events) {
+        var eventArray = [];
+        
+        for(var i = 0;i < events.length;i++){
+            eventArray.push({
+                'id':events[i].Id,
+                'start':events[i].StartDateTime,
+                'end':events[i].EndDateTime,
+                'title':events[i].Subject
+            });
+        }
+        return eventArray;
+    },
+    
+    loadDataToCalendar :function(component, data){      
+        var divCalendar = component.find('calendar').getElement();
+        
+        var today = new Date();
+        var year = today.getFullYear();        
+        var month = today.getMonth()+1;        
+        var day = today.getDate();
+        
+        $(divCalendar).fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: ''
+            },
+            defaultDate: year+'-'+month+'-'+day,
+            defaultView: 'basicDay',
+            editable: true,
+            eventLimit: true,
+            events:data,
+            eventColor: '#CFD7E6'
+        });
+        
+        $(divCalendar).fullCalendar('render');
+    },
 
     goGetHomeWeather : function(component, event, helper) {
         var action = component.get("c.getWeather");
@@ -77,7 +151,7 @@
     
     goGetNotes : function(component, event, helper) {
         var otHomeHasNotes = component.find("homeHasNotes");
-        
+        var self = this;
     	var action = component.get("c.getNotes");
         
         action.setCallback(this, function(response) {
@@ -92,7 +166,10 @@
                     var otHomeMyNotes = component.find("homeMyNotes");
                     
                     otHomeHasNotes.set("v.value", 'You have notes.');
-                    otHomeMyNotes.set("v.value", response.getReturnValue());
+                    
+                    var finalNotes = self.formatNotes(component, response.getReturnValue());
+
+                    otHomeMyNotes.set("v.value", finalNotes);
                     
                     $A.util.removeClass(otHomeShowNotes, "toggle");
                 }
@@ -117,6 +194,52 @@
         	}
         })
         $A.enqueueAction(action);
+    },
+    
+    formatNotes : function(component, data) {
+        var finalText = '';
+        var longWord = data.split(' ')[0];
+        
+        // Check if the text has a long first word
+        if (longWord.length > 45)  {
+            finalText = data.substring(0, 45) + '...';
+        } else {
+            // Cut the first 4 lines
+            var firstLine = data.split('\n')[0] + '\n';
+            var secondLine = '';
+            var thirdLine = '';
+            var fourthLine = '';
+            
+            if (data.split('\n')[1] != null) {
+                secondLine = data.split('\n')[1] + '\n';
+                
+                if (data.split('\n')[2] != null) {
+                    thirdLine = data.split('\n')[2] + '\n';
+                    
+                    if (data.split('\n')[3] != null) {
+                        fourthLine = data.split('\n')[3];
+                    }
+                }
+            }
+            
+            var shortText = firstLine + secondLine + thirdLine + fourthLine;
+            
+            
+            
+            // If the text is long, cut string to display only first 200 characters
+            if (shortText.length > 250) {
+                finalText = shortText.substring(0, 250) + '...';
+            } else {
+                // If the response has more than 4 lines we add an ellipsis
+                if (data.split('\n')[4] != null) {
+                   finalText = shortText + '...';
+                } else {
+                    finalText = shortText;
+                }
+            }
+        }
+        
+        return finalText;
     },
     
     goShowNotes : function(component, event, helper) {
