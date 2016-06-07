@@ -11,73 +11,91 @@
     </div>
     
     <div aura:id="homeCalendar" class="marginComponentArea">
-        <div id="tab-scoped-1" class="slds-tabs--default__nav"></div> 
-        
-        <p class="marginComponentTitleArea">
-            Calendar:
-        </p>
-        
-        <p>
-            <ui:outputURL class="smallText" click="{!c.goGetHomeEvents}" value="" label="Refresh &#x27f3;"/>
-        </p>
-        
-        <div aura:id="calendar"></div>
-        
-        <p class="smallText"> powered by FullCalendar </p>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1">
+                <div id="tab-scoped-1" class="slds-tabs--default__nav"></div> 
+                
+                <p class="marginComponentTitleArea">
+                    Calendar:
+                </p>
+                
+                <div class="marginAreaLeft">
+                    <p>
+                        <ui:outputURL class="smallText" click="{!c.goGetHomeEvents}" value="" label="Refresh &#x27f3;"/>
+                    </p>
+                    
+                    <div aura:id="calendar"></div>
+                    
+                    <p class="smallText"> powered by FullCalendar </p>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div aura:id="homeWeather" class="marginComponentArea">
-        <div id="tab-scoped-1" class="slds-tabs--default__nav"></div>   
-
-        <p class="marginComponentTitleArea">
-            Here's the weather:
-        </p>
+         <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1">
+                <div id="tab-scoped-1" class="slds-tabs--default__nav"></div>   
         
-        <div class="marginAreaLeft">
-            <p class="marginArea">
-                <ui:outputURL class="smallText" click="{!c.goGetHomeWeather}" value="" label="Refresh &#x27f3;"/>
-            </p>
-            
-            <p>
-                <img src="{!v.homeWeatherGif}"/>
-            </p>
-            
-            <p>
-                <ui:outputText aura:id="homeTemperatureF" value="0F"/> -
-                <ui:outputText aura:id="homeTemperatureC" value="0C"/>
-            </p>
-            
-            <p class="smallText"> powered by WeatherUnderground </p>
+                <p class="marginComponentTitleArea">
+                    Here's the weather:
+                </p>
+                
+                <div class="marginAreaLeft">
+                    <p class="marginArea">
+                        <ui:outputURL class="smallText" click="{!c.goGetHomeWeather}" value="" label="Refresh &#x27f3;"/>
+                    </p>
+                    
+                    <p>
+                        <img src="{!v.homeWeatherGif}"/>
+                    </p>
+                    
+                    <p>
+                        <ui:outputText aura:id="homeTemperatureF" value="0F"/> -
+                        <ui:outputText aura:id="homeTemperatureC" value="0C"/>
+                    </p>
+                    
+                    <p class="smallText"> powered by WeatherUnderground </p>
+                </div>
+                
+                <div id="tab-scoped-1" class="slds-tabs--default__nav"></div>
+             </div>
         </div>
-        
-        <div id="tab-scoped-1" class="slds-tabs--default__nav"></div>  
     </div>
     
     <div aura:id="homeNews" class="marginComponentArea">
+         <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1">
+             </div>
+        </div>
     </div>
     
     <div aura:id="homeNotes" class="marginComponentArea">
-        <p class="marginComponentTitleArea">
-            Personal notes:
-        </p>
-        
-        <div class="marginAreaLeft">
-            <p class="marginArea">
-                <ui:outputText aura:id="homeHasNotes" value=""/>
-            </p>
-            
-            <p>
-                <ui:outputURL class="toggle" aura:id="homeShowNotes" click="{!c.goShowNotes}" value="" label="(Show)"/>
-                <ui:outputURL class="toggle" aura:id="homeHideNotes" click="{!c.goHideNotes}" value="" label="(Hide)"/>
-            </p>
-            
-            <p class="marginArea">
-                <div class="textArea">
-                    <ui:outputTextArea class="toggle" aura:id="homeMyNotes" value=""/>
+         <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1">
+                <p class="marginComponentTitleArea">
+                    Personal notes:
+                </p>
+                
+                <div class="marginAreaLeft">
+                    <p class="marginArea">
+                        <ui:outputText aura:id="homeHasNotes" value=""/>
+                    </p>
+                    
+                    <p>
+                        <ui:outputURL class="toggle" aura:id="homeShowNotes" click="{!c.goShowNotes}" value="" label="(Show)"/>
+                        <ui:outputURL class="toggle" aura:id="homeHideNotes" click="{!c.goHideNotes}" value="" label="(Hide)"/>
+                    </p>
+                    
+                    <p class="marginArea">
+                        <div class="textArea">
+                            <ui:outputTextArea class="toggle" aura:id="homeMyNotes" value=""/>
+                        </div>
+                    </p>
                 </div>
-            </p>
+                
+                <div id="tab-scoped-1" class="slds-tabs--default__nav"></div>  
+            </div>
         </div>
-        
-        <div id="tab-scoped-1" class="slds-tabs--default__nav"></div>  
     </div>
 </aura:component>

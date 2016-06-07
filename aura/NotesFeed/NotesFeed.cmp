@@ -2,7 +2,7 @@
     <aura:handler event="c:NotesFeedEvent" action="{!c.loadNotes}"/>
 
     <p>
-        <ui:inputTextArea aura:id="myNotes" cols="60" rows="20" resizable="false" value="Loading..."/>
+        <ui:inputTextArea aura:id="myNotes" cols="50" rows="15" resizable="false" value="Loading..."/>
     </p>
     
     <p>

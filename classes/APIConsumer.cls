@@ -15,9 +15,9 @@ public with sharing class APIConsumer {
         HttpResponse res = h.send(req);
 
         Map<String, Object> generalWeather = (Map<String, Object>)JSON.deserializeUntyped(res.getBody());
-		    Map<String, Object>  specificWeather = (Map<String, Object>)generalWeather.get('current_observation');
+        Map<String, Object> specificWeather = (Map<String, Object>)generalWeather.get('current_observation');
 
-	      return specificWeather;
+        return specificWeather;
     }
     
     @AuraEnabled
@@ -58,5 +58,28 @@ public with sharing class APIConsumer {
     public static List<Event> getEvents(){
         return [SELECT Id, StartDateTime, EndDateTime, Subject 
                 FROM Event WHERE OwnerId =: UserInfo.getUserId()];
+    }
+    
+    @AuraEnabled
+    public static List<Object> getNewYorkTimesNews(){
+        Http h = new Http();
+
+        HttpRequest req = new HttpRequest();
+        req.setEndpoint('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=15d94aec580b4aac97fb4b088a8eba28');
+        req.setMethod('GET');
+
+        HttpResponse res = h.send(req);
+
+        System.debug('body: \n' + res.getBody());
+        
+        Map<String, Object> generalNews = (Map<String, Object>)JSON.deserializeUntyped(res.getBody());
+
+        List<Object> specificNews = (List<Object>)generalNews.get('results');
+        
+        System.debug('generalNews: \n' + generalNews);
+        
+        System.debug('specificNews: ' + specificNews);
+        
+        return specificNews;
     }
 }

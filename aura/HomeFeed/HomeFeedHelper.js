@@ -224,8 +224,6 @@
             
             var shortText = firstLine + secondLine + thirdLine + fourthLine;
             
-            
-            
             // If the text is long, cut string to display only first 200 characters
             if (shortText.length > 250) {
                 finalText = shortText.substring(0, 250) + '...';

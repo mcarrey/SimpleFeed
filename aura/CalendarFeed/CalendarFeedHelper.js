@@ -60,7 +60,7 @@
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'month,basicWeek,basicDay'
+                right: 'month,basicWeek'
             },
             defaultDate: year+'-'+month+'-'+day,
             editable: true,

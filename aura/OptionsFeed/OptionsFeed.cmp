@@ -1,0 +1,4 @@
+<aura:component >
+    <aura:handler event="c:OptionsFeedEvent" action="{!c.loadOptions}"/>
+    <p> Welp. </p>
+</aura:component>

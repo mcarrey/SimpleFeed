@@ -1,5 +1,32 @@
 <aura:component controller="APIConsumer" >
-	<p>
-		Today the dollar went up.
-	</p>
+    <aura:handler event="c:NewsFeedEvent" action="{!c.goGetExternalNews}"/>
+    
+    <div class="slds-tabs--default">
+  		<ul class="slds-tabs--default__nav" role="tablist">
+            <li class="slds-tabs--default__item slds-text-heading--label slds-active" role="presentation">
+    			<ui:outputURL click="{!c.goGetInternalNews}" value="" label="Org news"/>  
+            </li>
+            
+            <li class="slds-tabs--default__item slds-text-heading--label slds-active" role="presentation">
+    			<ui:outputURL click="{!c.goGetExternalNews}" value="" label="External news" class="marginArea"/>
+            </li>
+        </ul>
+    </div>
+    
+    <div aura:id="internalNews" class="marginComponentArea">
+        <p>
+            Today a sale happened.
+            
+        </p>
+    </div>
+    
+    <div aura:id="externalNews" class="marginComponentArea">
+        <p>
+            New York Times headlines:
+        </p>
+        
+        <p>
+            {!v.body}
+        </p>
+    </div>
 </aura:component>

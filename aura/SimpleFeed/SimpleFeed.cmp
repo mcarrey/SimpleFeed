@@ -1,62 +1,103 @@
-<aura:component >
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global">    
     <ltng:require styles="/resource/SLDS104/assets/styles/salesforce-lightning-design-system-ltng.css" />
 	
     <aura:registerEvent name="initiateHomeFeedEvent" type="c:HomeFeedEvent" />
+    <aura:registerEvent name="initiateNewsFeedEvent" type="c:NewsFeedEvent" />
     <aura:registerEvent name="initiateCalendarFeedEvent" type="c:CalendarFeedEvent" />
     <aura:registerEvent name="initiateWeatherFeedEvent" type="c:WeatherFeedEvent" />
     <aura:registerEvent name="initiateNotesFeedEvent" type="c:NotesFeedEvent" />
+    <aura:registerEvent name="initiateOptionsFeedEvent" type="c:OptionsFeedEvent" />
     
     
     <aura:handler name="init" value="{!this}" action="{!c.showHomeDiv}" />
     
     <div aura:id="mainWrapper" class="slds">
         <div aura:id="general" class="general">
+            
             <div aura:id="header" class="header">
-                <div class="slds-tabs--scoped">
-  					<ul class="slds-tabs--scoped__nav" role="tablist">
-    					<li class="slds-tabs--scoped__item slds-text-heading--label slds-active" title="Item One" role="presentation">
-        					<ui:outputURL class="slds-tabs--default__link" click="{!c.showHomeDiv}" value="" label="Home"/>
-                        </li>
+                <ul>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size--1-of-3 slds-small-size--1-of-3 slds-medium-size--1-of-3">
+                            <li>
+                                <ui:outputURL class="slds-tabs--default__link" click="{!c.showHomeDiv}" value="" label="HOME"/>
+                            </li>
+                            
+                            <li>
+                                <ui:outputURL class="slds-tabs--default__link" click="{!c.showWeatherDiv}" value="" label="WEATHER"/>
+                            </li>
+                        </div>
                         
-                        <li class="slds-tabs--scoped__item slds-text-heading--label slds-active" title="Item One" role="presentation">
-        					<ui:outputURL class="slds-tabs--default__link" click="{!c.showCalendarDiv}" value="" label="Calendar"/>
-                        </li>
+                        <div class="slds-col slds-size--1-of-3 slds-small-size--1-of-3 slds-medium-size--1-of-3">
+                            <li>
+                                <ui:outputURL class="slds-tabs--default__link" click="{!c.showNewsDiv}" value="" label="NEWS"/>
+                            </li>
                         
-                        <li class="slds-tabs--scoped__item slds-text-heading--label slds-active" title="Item One" role="presentation">
-        					<ui:outputURL class="slds-tabs--default__link" click="{!c.showWeatherDiv}" value="" label="Weather"/>
-                        </li>
+                            <li>
+                                <ui:outputURL class="slds-tabs--default__link" click="{!c.showNotesDiv}" value="" label="NOTES"/>
+                            </li>
+                        </div>
                         
-                        <li class="slds-tabs--scoped__item slds-text-heading--label slds-active" title="Item One" role="presentation">
-        					<ui:outputURL class="slds-tabs--default__link" click="{!c.showNewsDiv}" value="" label="News"/>
-                        </li>
-                        
-                        <li class="slds-tabs--scoped__item slds-text-heading--label slds-active" title="Item One" role="presentation">
-        					<ui:outputURL class="slds-tabs--default__link" click="{!c.showNotesDiv}" value="" label="Notes"/>
-                        </li>
-                    </ul>
-                </div>
+                        <div class="slds-col slds-size--1-of-3 slds-small-size--1-of-3 slds-medium-size--1-of-3">
+                            <li>
+                                <ui:outputURL class="slds-tabs--default__link" click="{!c.showCalendarDiv}" value="" label="CALENDAR"/>
+                            </li>
+                            
+                            <li>
+                                <ui:outputURL class="slds-tabs--default__link" click="{!c.showOptionsDiv}" value="" label="OPTIONS"/>
+                            </li>
+                        </div>
+                    </div>
+                </ul>
             </div>
             
             <div aura:id="body" class="body">
-            	<div id="tab-scoped-1" class="slds-tabs--scoped__content slds-show" role="tabpanel" aria-labelledby="tab-scoped-1__item">
+                <div id="tab-scoped-1" class="slds-tabs--scoped__content slds-show" role="tabpanel" aria-labelledby="tab-scoped-1__item">
                     <div aura:id="home" class="home">
-                        <c:HomeFeed />
-                    </div>
-                    
-                    <div aura:id="calendar" class="calendar">
-                        <c:CalendarFeed />
-                    </div>
-                    
-                    <div aura:id="weather" class="weather">
-                        <c:WeatherFeed />
+                        <div class="slds-grid">
+                            <div class="slds-col">
+                                <c:HomeFeed />
+                            </div>
+                        </div>
                     </div>
                     
                     <div aura:id="news" class="news">
-                        <c:NewsFeed />
+                        <div class="slds-grid">
+                            <div class="slds-col">
+                                <c:NewsFeed />
+                            </div>
+                        </div>
                     </div>
-        
-                     <div aura:id="notes" class="notes">
-                         <c:NotesFeed />
+                    
+                    <div aura:id="calendar" class="calendar">
+                        <div class="slds-grid">
+                            <div class="slds-col">
+                                <c:CalendarFeed />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div aura:id="weather" class="weather">
+                        <div class="slds-grid">
+                            <div class="slds-col">
+                                <c:WeatherFeed />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div aura:id="notes" class="notes">
+                        <div class="slds-grid">
+                            <div class="slds-col">
+                                <c:NotesFeed />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div aura:id="options" class="options">
+                        <div class="slds-grid">
+                            <div class="slds-col">
+                                <c:OptionsFeed />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
