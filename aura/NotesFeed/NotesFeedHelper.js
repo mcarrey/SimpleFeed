@@ -24,7 +24,6 @@
             }
 
             else if (state === "INCOMPLETE") {
-                console.log("Incomplete.");
                 otStatusNotes.set("v.value", ' - Loading incomplete -');
             }
 
@@ -32,10 +31,10 @@
             	var errors = response.getError();
                 if (errors) {
                     if (errors[0] && errors[0].message) {
-                        console.log("Error message: " + errors[0].message);
+                        // Manage state
                     }
                 } else {
-                	console.log("Unknown error");
+                	// Manage state
             	}
                 otStatusNotes.set("v.value", ' - Loading error -');
         	}
@@ -65,10 +64,10 @@
             	var errors = response.getError();
                 if (errors) {
                     if (errors[0] && errors[0].message) {
-                        console.log("Error message: " + errors[0].message);
+                        // Manage state
                     }
                 } else {
-                	console.log("Unknown error");
+                	// Manage state
             	}
                 otStatusNotes.set("v.value", ' - There was an error -');
         	}

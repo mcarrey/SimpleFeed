@@ -63,12 +63,23 @@
 
 .THIS .marginComponentTitleArea {
     margin-top: 10px;
+    margin-bottom: 5px;
     margin-left: 5px;
+    font-weight: bold;
+}
+
+.THIS .boldText {
+    font-weight: bold;
 }
 
 .THIS .textArea {
     max-width: 90%;
     margin-top: 10px;
+}
+
+.THIS .newsArea {
+    margin-top: 8px;
+   	margin-left: 5px;
 }
 
 .THIS .headerTableTr {

@@ -61,25 +61,44 @@ public with sharing class APIConsumer {
     }
     
     @AuraEnabled
-    public static List<Object> getNewYorkTimesNews(){
+    public static String getNewYorkTimesNews(String section){
         Http h = new Http();
 
         HttpRequest req = new HttpRequest();
-        req.setEndpoint('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=15d94aec580b4aac97fb4b088a8eba28');
+        req.setEndpoint('https://api.nytimes.com/svc/topstories/v2/'+ section +'.json?api-key=15d94aec580b4aac97fb4b088a8eba28');
+        req.setMethod('GET');
+
+        HttpResponse res = h.send(req);
+        
+        /*Map<String, Object> generalNews = (Map<String, Object>)JSON.deserializeUntyped(res.getBody());
+
+        List<Object> specificNews = (List<Object>)generalNews.get('results');
+        
+        return specificNews;*/
+        
+        return res.getBody();
+    }
+    
+    @AuraEnabled
+    public static List<Object> getHistoryEvents(){
+        Http h = new Http();
+
+        HttpRequest req = new HttpRequest();
+        req.setEndpoint('http://history.muffinlabs.com/date');
         req.setMethod('GET');
 
         HttpResponse res = h.send(req);
 
         System.debug('body: \n' + res.getBody());
         
-        Map<String, Object> generalNews = (Map<String, Object>)JSON.deserializeUntyped(res.getBody());
-
-        List<Object> specificNews = (List<Object>)generalNews.get('results');
+        Map<String, Object> generalData = (Map<String, Object>)JSON.deserializeUntyped(res.getBody());
+        Map<String, Object> generalEvents = (Map<String, Object>)generalData.get('data');
+        List<Object> specificEvents = (List<Object>)generalEvents.get('Events');
         
-        System.debug('generalNews: \n' + generalNews);
+        System.debug('generalEvents: \n' + generalEvents);
         
-        System.debug('specificNews: ' + specificNews);
+        System.debug('specificEvents: ' + specificEvents);
         
-        return specificNews;
+        return specificEvents;
     }
 }

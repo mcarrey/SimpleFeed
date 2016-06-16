@@ -1,7 +1,4 @@
 <aura:component controller="APIConsumer" >
-    <ltng:require scripts="/resource/jquery/jquery-2.2.4.min.js, /resource/fullcalendar/fullcalendar-2.7.2/fullcalendar.min.js"/>
-	<ltng:require styles="/resource/fullcalendar/fullcalendar-2.7.2/fullcalendar.min.css"/>
-
     <aura:handler event="c:CalendarFeedEvent" action="{!c.goGetEvents}"/>
     
     <aura:attribute name="calendarEvents" type="Object[]" />	

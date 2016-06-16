@@ -10,10 +10,25 @@
         </p>
     </div>
     
-    <div aura:id="homeCalendar" class="marginComponentArea">
+    <div aura:id="homeNews" class="marginComponentArea">
+        <div id="tab-scoped-1" class="slds-tabs--default__nav"></div>
+        
         <div class="slds-grid slds-wrap">
-            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1">
-                <div id="tab-scoped-1" class="slds-tabs--default__nav"></div> 
+             <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1">
+                 <p class="marginComponentTitleArea">
+                    Org recent news:
+                 </p>
+                 
+                 <forceChatter:feed type="news"/>
+             </div>
+        </div>
+    </div>
+    
+    <div aura:id="homeCalendar" class="marginComponentArea">
+        <div id="tab-scoped-1" class="slds-tabs--default__nav"></div> 
+        
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-2">
                 
                 <p class="marginComponentTitleArea">
                     Calendar:
@@ -27,6 +42,24 @@
                     <div aura:id="calendar"></div>
                     
                     <p class="smallText"> powered by FullCalendar </p>
+                </div>
+            </div>
+            
+            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-2">
+                <div class="marginAreaLeft">
+                    <p class="marginComponentTitleArea">
+                        Today in history:
+                    </p>
+                    
+                    <p class="marginAreaLeft">
+                        <div class="marginComponentArea">
+                        	{!v.body}
+                        </div>
+                    </p>
+                    
+                    <div class="marginAreaLeft">
+                        <p class="smallText"> powered by history.muffinlabs.com </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -59,13 +92,6 @@
                 </div>
                 
                 <div id="tab-scoped-1" class="slds-tabs--default__nav"></div>
-             </div>
-        </div>
-    </div>
-    
-    <div aura:id="homeNews" class="marginComponentArea">
-         <div class="slds-grid slds-wrap">
-            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1">
              </div>
         </div>
     </div>

@@ -1,15 +1,14 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global">    
-    <ltng:require styles="/resource/SLDS104/assets/styles/salesforce-lightning-design-system-ltng.css" />
-	
+    <ltng:require styles="/resource/SLDS104/assets/styles/salesforce-lightning-design-system-ltng.css, /resource/fullcalendar/fullcalendar-2.7.3/fullcalendar.min.css"
+                  scripts="/resource/jquery/jquery-2.2.4.min.js, /resource/fullcalendar/fullcalendar-2.7.3/fullcalendar.js"
+                  afterScriptsLoaded="{!c.showHomeDiv}" />
+    
     <aura:registerEvent name="initiateHomeFeedEvent" type="c:HomeFeedEvent" />
     <aura:registerEvent name="initiateNewsFeedEvent" type="c:NewsFeedEvent" />
     <aura:registerEvent name="initiateCalendarFeedEvent" type="c:CalendarFeedEvent" />
     <aura:registerEvent name="initiateWeatherFeedEvent" type="c:WeatherFeedEvent" />
     <aura:registerEvent name="initiateNotesFeedEvent" type="c:NotesFeedEvent" />
     <aura:registerEvent name="initiateOptionsFeedEvent" type="c:OptionsFeedEvent" />
-    
-    
-    <aura:handler name="init" value="{!this}" action="{!c.showHomeDiv}" />
     
     <div aura:id="mainWrapper" class="slds">
         <div aura:id="general" class="general">

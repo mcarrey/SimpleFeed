@@ -7,11 +7,13 @@
         $A.util.addClass(otHomeMyNotes, "toggle");
         $A.util.addClass(otHomeShowNotes, "toggle");
         $A.util.addClass(otHomeHideNotes, "toggle");
+        
+        component.set("v.body", []);
     },
     
     goGetUserFirstName : function(component, event, helper) {
     	var action = component.get("c.getUserFirstName");
-
+        
         action.setCallback(this, function(response) {
             var state = response.getState();
 
@@ -22,18 +24,17 @@
             }
 
             else if (state === "INCOMPLETE") {
-                console.log("Incomplete.");
+                // Manage state
             }
 
             else if (state === "ERROR") {
             	var errors = response.getError();
                 if (errors) {
                     if (errors[0] && errors[0].message) {
-                        console.log("Error message: " +
-                                    errors[0].message);
+                        // Manage state
                     }
                 } else {
-                	console.log("Unknown error");
+                	// Manage state
             	}
         	}
         })
@@ -57,17 +58,17 @@
             }
 
             else if (state === "INCOMPLETE") {
-                console.log("Incomplete.");
+                // Manage state
             }
 
             else if (state === "ERROR") {
             	var errors = response.getError();
                 if (errors) {
                     if (errors[0] && errors[0].message) {
-                        console.log("Error message: " + errors[0].message);
+                        // Manage state
                     }
                 } else {
-                	console.log("Unknown error");
+                	// Manage state
             	}
         	}
         });
@@ -116,7 +117,7 @@
 
     goGetHomeWeather : function(component, event, helper) {
         var action = component.get("c.getWeather");
-
+        
         action.setCallback(this, function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {
@@ -131,18 +132,17 @@
             }
 
             else if (state === "INCOMPLETE") {
-                console.log("Incomplete.");
+                // Manage state
             }
 
             else if (state === "ERROR") {
             	var errors = response.getError();
                 if (errors) {
                     if (errors[0] && errors[0].message) {
-                        console.log("Error message: " +
-                                    errors[0].message);
+                        // Manage state
                     }
                 } else {
-                	console.log("Unknown error");
+                	// Manage state
             	}
         	}
         })
@@ -176,7 +176,6 @@
             }
 
             else if (state === "INCOMPLETE") {
-                console.log("Incomplete.");
                 otHomeHasNotes.set("v.value", ' - Loading incomplete -');
             }
 
@@ -184,11 +183,10 @@
             	var errors = response.getError();
                 if (errors) {
                     if (errors[0] && errors[0].message) {
-                        console.log("Error message: " +
-                                    errors[0].message);
+                        // Manage state
                     }
                 } else {
-                	console.log("Unknown error");
+                	// Manage state
             	}
                 otHomeHasNotes.set("v.value", ' - Loading error -');
         	}
@@ -258,5 +256,58 @@
         $A.util.removeClass(otHomeShowNotes, "toggle");
         $A.util.addClass(otHomeHideNotes, "toggle");
         $A.util.addClass(otHomeMyNotes, "toggle");
-    }
+    },
+    
+    goGetHistoryEvents : function(component, event, helper) {
+		var action = component.get("c.getHistoryEvents");
+
+        action.setCallback(this, function(response) {
+            var state = response.getState();
+            
+            if (state === "SUCCESS") {
+                var todayOnHistory = response.getReturnValue();
+                
+                var i = 0;
+                
+                while (todayOnHistory[i] != null && i<10){
+                    
+                	var todayOnHistoryLink = todayOnHistory[i].links;
+                    
+                    $A.createComponent(
+                        "ui:outputText",
+                        {
+                           "value" : '- ' + todayOnHistory[i].year + ', ' + todayOnHistory[i].text + '\n \n'
+                        },
+                        function(newOutputText){
+                            //Add the new button to the body array
+                            if (component.isValid()) {
+                                var body = component.get("v.body");
+                                body.push(newOutputText);
+                                component.set("v.body", body);
+                            }
+                        }
+                    );
+                    
+                    i++;
+                }
+                
+            }
+
+            else if (state === "INCOMPLETE") {
+            }
+                
+            else if (state === "ERROR") {
+                var errors = response.getError();
+                if (errors) {
+                    if (errors[0] && errors[0].message) {
+                        // Manage state
+                    }
+                } else {
+                    // Manage state
+                }
+            }
+        })
+        
+        $A.enqueueAction(action);
+	}
 })
