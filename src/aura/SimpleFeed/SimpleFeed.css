@@ -1,0 +1,95 @@
+.THIS {
+}
+
+/* Hides elements */
+.THIS .toggle {
+    display: none !important;
+}
+
+/* Main container */
+.THIS .general {
+    height: 50%;
+    width: 99%;
+    min-height: 40%;
+    min-width: 75%;
+}
+
+/* Main menu */
+.THIS .header {
+    width: 100%;
+    height: 5%;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #f4f6f9;
+    border: 1px solid #d8dde6;
+  	border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.THIS .body {
+    width: 100%;
+    height: 90%;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.THIS .footer {
+    width: 100%;
+    height: 5%;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.THIS .smallText {
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.THIS .marginArea {
+    margin-top: 5px;
+}
+
+.THIS .marginAreaLeft {
+    margin-left: 10px;
+}
+
+.THIS .marginComponentArea {
+    margin-top: 10px;
+    align-content: center;
+}
+
+.THIS .marginComponentTitleArea {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.THIS .boldText {
+    font-weight: bold;
+}
+
+.THIS .textArea {
+    max-width: 90%;
+    margin-top: 10px;
+}
+
+.THIS .newsArea {
+    margin-top: 8px;
+   	margin-left: 5px;
+}
+
+.THIS .headerTableTr {
+    width: 100%;
+}
+
+.THIS .headerTableTd {
+    width: 1%;
+}
+
+.THIS .slds-tabs--scoped__nav {
+    width: 100%;
+}
