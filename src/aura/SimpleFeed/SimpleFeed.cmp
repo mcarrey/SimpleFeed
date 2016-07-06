@@ -1,6 +1,6 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global">    
     <ltng:require styles="/resource/SLDS104/assets/styles/salesforce-lightning-design-system-ltng.css, /resource/fullcalendar/fullcalendar.css"
-                  scripts="/resource/jquery/jquery-2.2.4.js, /resource/fullcalendar/lib/moment.min.js, /resource/fullcalendar/fullcalendar.js"
+                  scripts="/resource/jquery/jquery-2.2.4.js, /resource/fullcalendar/moment.min.js, /resource/fullcalendar/fullcalendar.js"
                   afterScriptsLoaded="{!c.showHomeDiv}" />
     
     <aura:registerEvent name="initiateHomeFeedEvent" type="c:HomeFeedEvent" />

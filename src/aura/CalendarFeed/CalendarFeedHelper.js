@@ -70,7 +70,7 @@
             events:data,
             eventColor: '#CFD7E6'
         });
-        
+        debugger;
         $(divCalendar).fullCalendar('render');
     }
 })

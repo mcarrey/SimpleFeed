@@ -44,16 +44,14 @@
     goGetHomeEvents: function(component) {
         
         var action = component.get("c.getEvents"); 
-        var self = this;
         
         action.setCallback(this, function(response) {
             var state = response.getState();
             
             if(component.isValid() && state === "SUCCESS"){
                 if (response.getReturnValue() != null) {
-                    var responseEvents = self.tranformToFullCalendarFormat(component, response.getReturnValue());
-                    debugger;
-                    self.loadDataToCalendar(component, responseEvents);
+                    var responseEvents = this.tranformToFullCalendarFormat(component, response.getReturnValue());
+                    this.loadDataToCalendar(component, responseEvents);
                     component.set("v.calendarEvents", responseEvents);
                 }
             }
@@ -92,13 +90,31 @@
     },
     
     loadDataToCalendar :function(component, data){      
-        var divCalendar = component.find('calendar').getElement();
+        var divCalendar = component.find("calendar").getElement();
+        //var divCalendar = $( "calendar" );
         
         var today = new Date();
         var year = today.getFullYear();        
         var month = today.getMonth()+1;        
         var day = today.getDate();
         
+        /*divCalendar.fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: ''
+            },
+            defaultDate: year+'-'+month+'-'+day,
+            defaultView: 'basicDay',
+            editable: true,
+            eventLimit: true,
+            events:data,
+            eventColor: '#CFD7E6'
+        });
+        
+        divCalendar.fullCalendar('render');*/
+        
+        console.log('jquery: '+ $(divCalendar).text() );
         $(divCalendar).fullCalendar({
             header: {
                 left: 'prev,next today',

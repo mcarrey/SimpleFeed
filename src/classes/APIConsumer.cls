@@ -56,6 +56,9 @@ public with sharing class APIConsumer {
     
     @AuraEnabled
     public static List<Event> getEvents(){
+        system.debug('Events: ' + [SELECT Id, StartDateTime, EndDateTime, Subject 
+                FROM Event WHERE OwnerId =: UserInfo.getUserId()]);
+        
         return [SELECT Id, StartDateTime, EndDateTime, Subject 
                 FROM Event WHERE OwnerId =: UserInfo.getUserId()];
     }

@@ -1,0 +1,14 @@
+{
+    "projectName": "simpleFeed",
+    "username": "maucarr2@altimetrik.com",
+    "id": "818feed0-43a4-11e6-af80-a5f0fa68cac6",
+    "namespace": "",
+    "environment": "production",
+    "loginUrl": "https://login.salesforce.com/",
+    "workspace": "/Users/mcarrey/Documents/Workspace/Salesforce",
+    "subscription": [
+        "ApexClass",
+        "AuraDefinitionBundle",
+        "StaticResource"
+    ]
+}
